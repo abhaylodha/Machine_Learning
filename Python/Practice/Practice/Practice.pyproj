@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>109761c6-c80c-43be-992c-6dcf4f6033dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Practice.py</StartupFile>
+    <StartupFile>trial.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,29 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="com\ak\shoppoing_cart.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="com\ak\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="trial.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="package_example.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="utility.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module_example.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Practice.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="com\" />
+    <Folder Include="com\ak\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

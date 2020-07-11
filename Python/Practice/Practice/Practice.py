@@ -282,6 +282,11 @@ for item in some_list :
     some_list = new_list
 print (duplicates)
 
+print('duplicates1 : ')
+some_list = ['a','b','c','b','d','m','n','n','n']
+duplicates1 = list({x for x in some_list if some_list.count(x) > 1})
+print (duplicates1)
+
 #####################
 # DocStrings
 #####################
@@ -324,6 +329,10 @@ print(is_odd_or_even_v2(51))
 #####################
 #*args - Varying number of arguments
 #**kwargs - Keyword arguments
+#Order - Positional, args, default args, kwargs.
+print('---------------------')
+print('Agrs and KwArgs - 1')
+print('---------------------')
 
 def fun1 (*args, **kwargs) :
   print(args)
@@ -332,3 +341,154 @@ def fun1 (*args, **kwargs) :
 
 fun1 (1,2,3,4,5,n1=55,n2=50)
 
+print('---------------------')
+print('Agrs and KwArgs - 2')
+print('---------------------')
+
+def fun2 (name, *args, age=25, **kwargs) :
+  print(name)
+  print(args)
+  print(age)
+  print(kwargs)
+
+fun2 (1,2,3,4,5,n1=55,n2=50)
+
+fun2 ("A1",1,2,3,4,5, age=30, n1=55,n2=50)
+
+########################
+# Scoping
+########################
+#In below- x is in global scope, which is conditionally either initialized or not defined.
+if True :
+  x = 10
+
+count = 0
+def counter() :
+  #count += 10   .... This does not work
+  global count
+  count += 1
+  print('coutner : ',count)
+
+counter()
+counter()
+counter()
+
+########################
+# Scoping - 2 - nonlocal
+########################
+
+v1 = 100
+def nonlocal_outer() :
+  v1 = 10
+  def nonlocal_inner1() :
+    nonlocal v1
+    v1 += 1
+    print("nonlocal_inner1 - ", v1)   #11
+  def nonlocal_inner2() :
+    global v1
+    v1 += 500
+    print("nonlocal_inner2 - ",v1)   #600
+  nonlocal_inner1()
+  nonlocal_inner2()
+  print("nonlocal_outer - ",v1)    #11
+
+nonlocal_outer()
+print("global - ",v1)     #600
+
+
+##################
+# Pure Functions
+##################
+#A Function whose results are always predictable [ f(x) is always = y ] and is referentially transparent.
+print('------------------')
+print('Pure Function')
+print('------------------')
+def pure_fn_multiply_by_2(lst) :
+  new_list = []
+  for i in lst :
+    new_list.append(i*2)
+  return new_list
+
+print(pure_fn_multiply_by_2([1,2,3]))
+
+##################
+# map
+##################
+print('--------------')
+print('map')
+print('--------------')
+def multiply_by_2(i):
+  return(i*2)
+
+print(list(map(multiply_by_2,[1,2,3])))
+
+##################
+# filter
+##################
+print('--------------')
+print('filter')
+print('--------------')
+def is_odd(i):
+  return(i%2!=0)
+
+print(list(filter(is_odd,[1,2,3])))
+
+##################
+# zip
+##################
+print('--------------')
+print('zip')
+print('--------------')
+list2 = [2,4,6]
+print(list(zip([1,2,3],list2)))
+##################
+# reduce
+##################
+from functools import reduce
+print('--------------')
+print('reduce')
+print('--------------')
+def get_sum(acc,item) :
+  return (acc + item)
+
+print(reduce(get_sum, range(0, 10), 0))
+
+##################
+# List Comprehension
+##################
+my_list1 = [char for char in 'hello']
+my_list2 = [num for num in range(0,10)]
+my_list3 = [num*2 for num in range(0,10)]
+my_list4 = [num*2 for num in range(0,10) if (num%2 == 0) ]
+print(my_list1)
+print(my_list2)
+print(my_list3)
+print(my_list4)
+
+##################
+# Set Comprehension
+##################
+my_set1 = {char for char in 'hello'}
+my_set2 = {num for num in range(0,10)}
+my_set3 = {num*2 for num in range(0,10)}
+my_set4 = {num*2 for num in range(0,10) if (num%2 == 0) }
+print(my_set1)
+print(my_set2)
+print(my_set3)
+print(my_set4)
+
+##################
+# Dictionary Comprehension
+##################
+my_dict = {
+    'a' : 2,
+    'b' : 5,
+    'c' : 6
+    }
+dict1 = { key:value*2 for key,value in my_dict.items()}
+dict2 = { key:value*2 for key,value in my_dict.items() if key=='a'}
+print(dict1)
+print(dict2)
+
+print("hello".upper())
+print("hello".replace('h','w'))
